@@ -1,6 +1,6 @@
 import { createApp } from './vendor/vue.esm-browser.js';
 
-export default createApp({
+createApp({
   data() {
     return {
       count: 0,
