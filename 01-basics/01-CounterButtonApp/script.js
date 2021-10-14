@@ -18,4 +18,4 @@ createApp({
       return this.count++;
     },
   },
-}).$mount('#app');
+}).mount('#app');
