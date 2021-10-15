@@ -7,15 +7,9 @@ createApp({
     };
   },
 
-  computed: {
-    getCount() {
-      return this.count;
-    },
-  },
-
   methods: {
-    setCountAdd() {
-      return this.count++;
+    increment() {
+      return (this.count += 1);
     },
   },
 }).mount('#app');

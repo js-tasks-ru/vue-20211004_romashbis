@@ -35,12 +35,14 @@
         <input v-model.number='preOperand' type="number" />
       </div>
 
-      <div @click="getOperation($event.target.value)" class="col"
-        style="display: flex; flex-direction: column; font-family: emoji">
-        <label><input type="radio" value="sum" name="operator" /> ➕</label>
-        <label><input type="radio" value="subtract" name="operator" /> ➖</label>
-        <label><input type="radio" value="multiply" name="operator" /> ✖</label>
-        <label><input type="radio" value="divide" name="operator" /> ➗</label>
+      <div class="col" style="display: flex; flex-direction: column; font-family: emoji">
+        <label><input v-model="operator" type="radio" value="sum" name="operator" /> ➕</label>
+        <label><input v-model="operator" type="radio" value="subtract" name="operator" />
+          ➖</label>
+        <label><input v-model="operator" type="radio" value="multiply" name="operator" />
+          ✖</label>
+        <label><input v-model="operator" type="radio" value="divide" name="operator" />
+          ➗</label>
       </div>
 
       <div class="col">
@@ -49,7 +51,7 @@
 
       <div class="col">=</div>
 
-      <output class="col">{{result}}</output>
+      <output class="col">{{ calc }}</output>
     </div>
   </div>
 
