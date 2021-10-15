@@ -9,7 +9,7 @@ createApp({
 
   methods: {
     increment() {
-      this.count += 1;
+      return (this.count += 1);
     },
   },
 }).mount('#app');
