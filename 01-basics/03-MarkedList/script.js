@@ -32,15 +32,18 @@ createApp({
         'Isaias_Kuhic@jarrett.net',
       ],
       search: null,
-      markedObj: false,
     };
   },
 
   computed: {
-    colorized: function () {
-      if (this.emails.map((email) => email.includes(this.search))) return (this.markedObj = true);
-
-      return (this.markedObj = false);
+    isMatch: function () {
+      return this.emails.map(
+        (email) =>
+          (email = {
+            emailData: email,
+            emailClass: this.search != '' ? email.includes(this.search) : false,
+          }),
+      );
     },
   },
 }).mount('#app');
