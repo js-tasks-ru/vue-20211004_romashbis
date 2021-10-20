@@ -18,7 +18,23 @@ function fetchMeetupById(meetupId) {
 createApp({
   data() {
     return {
-      meetUps: fetchMeetupById(),
+      meetUps: null,
+      radioCheck: null,
     };
+  },
+
+  created() {
+    this.getData();
+  },
+
+  methods: {
+    getData() {
+      fetchMeetupById().then((data) => {
+        return (this.meetUps = data);
+      });
+    },
+    inputChecked(x) {
+      console.log(x);
+    },
   },
 }).mount('#app');
