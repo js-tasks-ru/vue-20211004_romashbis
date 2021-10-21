@@ -3,7 +3,7 @@ import { createApp } from './vendor/vue.esm-browser.js';
 const API_URL = 'https://course-vue.javascript.ru/api';
 
 function fetchMeetupById(meetupId) {
-  return fetch(`${API_URL}/meetups/`).then((response) => {
+  return fetch(`${API_URL}/meetups/${meetupId}`).then((response) => {
     if (response.ok) {
       return response.json();
     } else {
@@ -19,22 +19,19 @@ createApp({
   data() {
     return {
       meetUps: null,
-      radioCheck: null,
     };
   },
 
-  created() {
-    this.getData();
+  watch: {
+    meetUps(oldValue, newValue) {
+      if (newValue) return newValue;
+      return oldValue;
+    },
   },
 
   methods: {
-    getData() {
-      fetchMeetupById().then((data) => {
-        return (this.meetUps = data);
-      });
-    },
-    inputChecked(x) {
-      console.log(x);
+    dataGet(x) {
+      return fetchMeetupById(x).then((data) => (this.meetUps = data));
     },
   },
 }).mount('#app');
