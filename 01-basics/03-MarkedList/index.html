@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/assets/styles/index.css" />
-    <title>MarkedList</title>
-    <style>
-      .marked {
-        color: #efc14e;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="app" style="margin-top: 2rem">
-      <div class="container">
-        <div class="form-group">
-          <input v-model="search" type="search" />
-        </div>
-        <ul>
-          <li v-for="email in isMatch" :class="{marked: email.emailClass} " :key="email">{{ email.emailData }}</li>
-        </ul>
-      </div>
-    </div>
 
-    <script type="module" src="script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="/assets/styles/index.css" />
+  <title>MarkedList</title>
+  <style>
+    .marked {
+      color: #efc14e;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app" style="margin-top: 2rem">
+    <div class="container">
+      <div class="form-group">
+        <input v-model="search" type="search" />
+      </div>
+      <ul>
+        <li v-for="email in matchingEmails" :class="{marked: email.isMatch} " :key="email">{{ email.email }}</li>
+      </ul>
+    </div>
+  </div>
+
+  <script type="module" src="script.js"></script>
+</body>
+
 </html>

@@ -36,14 +36,11 @@ createApp({
   },
 
   computed: {
-    isMatch: function () {
-      return this.emails.map(
-        (email) =>
-          (email = {
-            emailData: email,
-            emailClass: this.search != '' ? email.includes(this.search) : false,
-          }),
-      );
+    matchingEmails() {
+      return this.emails.map((email) => ({
+        email,
+        isMatch: this.search != '' && email.includes(this.search),
+      }));
     },
   },
 }).mount('#app');
