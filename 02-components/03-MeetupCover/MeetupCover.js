@@ -14,12 +14,8 @@ export default defineComponent({
     },
   },
 
-  data() {
-    return { imageProp: this.image ? '--bg-url: url(' + this.image + ')' : '' };
-  },
-
   template: `
-    <div class="meetup-cover" :style="imageProp">
+    <div class="meetup-cover" :style=" image ? '--bg-url: url(' + image + ')' : --bg-url ">
         <h1 class="meetup-cover__title">{{ title }}</h1>
     </div>`,
 });

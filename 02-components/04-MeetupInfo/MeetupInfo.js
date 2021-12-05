@@ -19,10 +19,15 @@ export default defineComponent({
   },
 
   computed: {
-    convertedDate() {
-      let newDate = new Date(this.date);
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      return newDate.toLocaleDateString(navigator.language, options); // <-- у меня локаль Английская, поэтому захардкодил на русскую
+    dateNew() {
+      return new Date(this.date).toLocaleDateString(navigator.language, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+    },
+    attrDate() {
+      return new Date(this.date).toISOString().substr(0, 10);
     },
   },
 
@@ -38,7 +43,7 @@ export default defineComponent({
       </li>
       <li>
         <img class="icon meetup-info__icon" alt="icon" src="/assets/icons/icon-cal-lg.svg" />
-        <time :datetime="convertedDate"> {{ convertedDate }} </time>
+        <time :datetime="attrDate"> {{ dateNew }} </time>
       </li>
     </ul>`,
 });
