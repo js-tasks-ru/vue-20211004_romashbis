@@ -4,6 +4,10 @@ import { defineComponent } from './vendor/vue.esm-browser.js';
 export default defineComponent({
   name: 'MeetupAgenda',
 
+  // components: {
+  //   MeetupAgendaItem,
+  // },
+
   template: `
     <ul class="agenda">
       <li class="agenda__item">
