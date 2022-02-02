@@ -14,23 +14,69 @@ export default defineComponent({
     MeetupView,
   },
 
+  props: {
+    meetupId: {
+      type: Number,
+      required: true,
+    },
+  },
+
   data() {
     return {
-      meetupById: fetchMeetupById(),
+      meetup: null,
+      isLoading: false,
+      isError: false,
     };
+  },
+
+  watch: {
+    meetupId(newId) {
+      this.getData(newId);
+    },
+  },
+
+  created() {
+    this.getData(this.meetupId);
+  },
+
+  methods: {
+    getData(id) {
+      this.isLoading = true;
+      this.isError = false;
+      fetchMeetupById(id)
+        .then((data) => {
+          this.isLoading = false;
+          this.meetup = data;
+        })
+        .catch(() => {
+          this.isLoading = false;
+          this.isError = true;
+        });
+    },
   },
 
   template: `
     <div class="page-meetup">
-    <!--  
-    <MeetupView :meetup="meetupById"/>
--->
-      <ui-container>
-        <ui-alert>Загрузка...</ui-alert>
-      </ui-container>
 
-      <ui-container>
-        <ui-alert>error</ui-alert>
-      </ui-container>
+      <template v-if="isLoading">
+        <ui-container >
+          <ui-alert>Загрузка...</ui-alert>
+        </ui-container>
+      </template>
+
+      <template v-else-if="isError">
+        <ui-container>
+          <ui-alert>Test Error</ui-alert>
+        </ui-container>
+      </template>
+
+      <template v-else>
+          <MeetupView :meetup="meetup"/>
+      </template>
+
+      
+
+
+      
     </div>`,
 });
