@@ -19,7 +19,7 @@ export default {
 
   data() {
     return {
-      url: `url(${this.image})`,
+      url: this.image ? `url(${this.image})` : 'var(--default-cover)',
     };
   },
 };
