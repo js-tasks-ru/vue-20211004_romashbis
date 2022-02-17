@@ -3,6 +3,7 @@
     <!-- 'form-group_inline' -->
     <label v-if="label" class="form-group__label">{{ label }}</label>
     <!-- CONTENT -->
+    <slot />
   </div>
 </template>
 
