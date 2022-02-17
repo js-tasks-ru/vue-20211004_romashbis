@@ -17,10 +17,10 @@ export default {
     },
   },
 
-  data() {
-    return {
-      url: this.image ? `url(${this.image})` : 'var(--default-cover)',
-    };
+  computed: {
+    haveImage() {
+      return this.image ? `url(${this.image})` : 'var(--default-cover)';
+    },
   },
 };
 </script>
@@ -29,7 +29,7 @@ export default {
 .meetup-cover {
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), v-bind('url');
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), v-bind('haveImage');
   /* background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), var(--default-cover); */
   display: flex;
   flex-direction: column;
