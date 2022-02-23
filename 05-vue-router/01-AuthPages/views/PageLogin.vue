@@ -39,6 +39,9 @@ export default {
   methods: {
     handleSubmit() {
       // Требуется обработать сабмит формы
+      if (this.$route.query.from) {
+        return this.$router.push({ name: 'register' });
+      } else return this.$router.push({ name: 'main' });
     },
   },
 };
